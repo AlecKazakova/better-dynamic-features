@@ -1,20 +1,37 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-  xmlns:dist="http://schemas.android.com/apk/distribution">
-  <dist:module
-    dist:instant="true"/>
+    xmlns:dist="http://schemas.android.com/apk/distribution">
 
   <application
-    android:label="Box App"
       android:name="com.google.android.play.core.splitcompat.SplitCompatApplication"
-    >
-    <activity android:name=".ui.MainActivity"
-      android:exported="true">
+      android:icon="@drawable/box_icon"
+      android:label="Box App"
+      android:targetSandboxVersion="2"
+      >
+    <activity
+        android:name=".ui.MainActivity"
+        android:exported="true">
       <intent-filter>
-        <action android:name="android.intent.action.MAIN"/>
+        <action android:name="android.intent.action.MAIN" />
 
-        <category android:name="android.intent.category.LAUNCHER"/>
-        <category android:name="android.intent.category.DEFAULT"/>
+        <category android:name="android.intent.category.LAUNCHER" />
+        <category android:name="android.intent.category.DEFAULT" />
       </intent-filter>
+
+      <intent-filter android:autoVerify="true">
+        <action android:name="android.intent.action.VIEW"/>
+        <category android:name="android.intent.category.BROWSABLE" />
+        <category android:name="android.intent.category.DEFAULT" />
+        <data android:scheme="http" />
+        <data android:scheme="https" />
+        <data android:host="alecstrong.com" />
+        <data android:path="/boxapp" />
+      </intent-filter>
+
+      <meta-data
+        android:name="default-url"
+        android:value="https://alecstrong.com/boxapp" />
     </activity>
   </application>
+
+  <dist:module dist:instant="true" />
 </manifest>
